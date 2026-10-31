@@ -92,27 +92,27 @@ export function Hero() {
     >
       <DrinkTitle name={drink.name} animate={animateIn} />
 
-      <div
-        className="absolute bottom-[17%] left-1/2 z-[2] h-[min(22vw,31vh)] w-[min(44vw,62vh)] -translate-x-1/2 rounded-b-[999px] bg-[var(--banner-disc)] max-[860px]:bottom-[30%] max-[860px]:h-[35vw] max-[860px]:w-[70vw]"
-        style={{
-          transform: animateIn
-            ? "translateX(-50%) scaleY(1)"
-            : "translateX(-50%) scaleY(0)",
-          transformOrigin: "50% 0",
-          transition:
-            "transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s, background-color 0.9s",
-        }}
-      />
-
-      <div className="banner-drink absolute bottom-[calc(17%-14px)] left-1/2 z-[3] aspect-[3/5] h-[min(64%,calc(66vw+90px))] -translate-x-1/2 max-[860px]:bottom-[calc(30%-10px)] max-[860px]:h-[40%]">
+      <div className="pointer-events-none absolute right-0 bottom-[17%] left-0 z-[2] flex justify-center max-[860px]:bottom-[30%]">
         <div
-          className={cn(
-            "h-full w-full transition-[transform,opacity] duration-1000 ease-[cubic-bezier(0.2,0.9,0.3,1.2)]",
-            animateIn ? "banner-drink-in" : "opacity-0 -translate-y-[70px] scale-[0.92]",
-          )}
-          style={{ transitionDelay: "0.2s" }}
-        >
-          <DrinkVisual drink={drink} />
+          className="h-[min(22vw,31vh)] w-[min(44vw,62vh)] max-[860px]:h-[35vw] max-[860px]:w-[70vw] origin-top rounded-b-[999px] bg-[var(--banner-disc)] transition-[transform,background-color] duration-[900ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]"
+          style={{
+            transform: animateIn ? "scaleY(1)" : "scaleY(0)",
+            transitionDelay: "0.15s",
+          }}
+        />
+      </div>
+
+      <div className="pointer-events-none absolute right-0 bottom-[calc(17%-14px)] left-0 z-[3] flex justify-center max-[860px]:bottom-[calc(30%-10px)]">
+        <div className="aspect-[3/5] h-[min(64%,calc(66vw+90px))] max-[860px]:h-[40%]">
+          <div
+            className={cn(
+              "mx-auto h-full w-full transition-[transform,opacity] duration-1000 ease-[cubic-bezier(0.2,0.9,0.3,1.2)]",
+              animateIn ? "banner-drink-in" : "opacity-0 -translate-y-[70px] scale-[0.92]",
+            )}
+            style={{ transitionDelay: "0.2s" }}
+          >
+            <DrinkVisual drink={drink} />
+          </div>
         </div>
       </div>
 

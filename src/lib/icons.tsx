@@ -11,6 +11,9 @@ export const ICONS = {
   heart:
     '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
   bake: '<path d="M4 15a8 8 0 0 1 16 0v3H4z"/><path d="M12 7v3"/>',
+  music:
+    '<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>',
+  moon: '<path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>',
 } as const;
 
 export function CafeIcon({ name }: { name: keyof typeof ICONS }) {

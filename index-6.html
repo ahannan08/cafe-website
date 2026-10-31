@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brew&amp;Bean – Why us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--esp:#3B2A20;--ink:#2A1D16;--cream:#F6EFE6;--sand:#EBDFCE;--car:#C98B4A;--moc:#8A6A52;--serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--pad:clamp(16px,5vw,72px);box-sizing:border-box;color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--cream);color:var(--esp);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+h2,h3,p{margin:0}
+em{font-style:italic;color:var(--car)}
+.why{padding:clamp(72px,10vw,130px) var(--pad);max-width:1400px;margin:0 auto}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,56px)}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--moc);margin-bottom:14px}
+.head h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,5vw,64px);line-height:1.05;letter-spacing:-.03em;max-width:720px}
+.lead{max-width:300px;color:var(--moc)}
+
+.grid{display:grid;grid-template-columns:1fr 1.45fr 1fr 1fr;grid-template-rows:repeat(6,104px);gap:14px}
+.card{position:relative;border-radius:30px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;opacity:0;transform:translateY(28px);transition:opacity .8s var(--d,0ms),transform .8s cubic-bezier(.2,.8,.2,1) var(--d,0ms),box-shadow .35s}
+.card.on{opacity:1;transform:none}
+.card.on:hover{transform:translateY(-6px);box-shadow:0 24px 40px -24px rgba(59,42,32,.45);transition-delay:0s}
+.sand{background:var(--sand);color:var(--esp)}
+.dark{background:var(--ink);color:var(--cream)}
+.car{background:var(--car);color:#1A110C}
+.ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(59,42,32,.09);transition:transform .4s}
+.dark .ic{background:rgba(246,239,230,.12);color:var(--car)}
+.car .ic{background:rgba(26,17,12,.12)}
+.card:hover .ic{transform:rotate(-8deg) scale(1.08)}
+.ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-family:var(--serif);font-weight:400;font-size:clamp(21px,2vw,27px);letter-spacing:-.02em;line-height:1.15;margin-bottom:6px}
+.card p{font-size:14px;opacity:.72;max-width:260px}
+.c1{grid-column:1;grid-row:1/4}.c2{grid-column:1;grid-row:4/7}
+.c3{grid-column:3;grid-row:1/3}.c4{grid-column:4;grid-row:1/3}
+.c5{grid-column:3;grid-row:3/5}.c6{grid-column:4;grid-row:3/5}
+.c7{grid-column:3;grid-row:5/7}.c8{grid-column:4;grid-row:5/7}
+.c1 h3,.c2 h3{font-size:clamp(26px,2.6vw,34px)}
+.eq{display:flex;gap:7px;align-items:flex-end;height:90px;margin-top:6px}
+.eq i{width:9px;height:25%;border-radius:5px;background:var(--car);animation:eq 1.3s ease-in-out infinite}
+@keyframes eq{50%{height:100%}}
+.steam{position:absolute;right:22px;top:26px;width:70px;height:70px;fill:none;stroke:rgba(26,17,12,.5);stroke-width:4;stroke-linecap:round}
+.steam path{animation:st 3s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.8s}.steam path:nth-child(3){animation-delay:1.6s}
+@keyframes st{0%{opacity:0;transform:translateY(12px)}40%{opacity:1}100%{opacity:0;transform:translateY(-14px)}}
+
+.hero{grid-column:2;grid-row:1/7;background:var(--esp);padding:0;color:var(--cream)}
+.disc{position:absolute;left:50%;bottom:-6%;width:92%;aspect-ratio:1;border-radius:50%;background:var(--car);transform:translateX(-50%)}
+.ring{position:absolute;left:50%;bottom:-14%;width:112%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(246,239,230,.14);transform:translateX(-50%)}
+.person{position:absolute;left:50%;bottom:0;width:104%;transform:translateX(-50%)}
+.person img{position:absolute;left:0;bottom:0;width:100%;height:auto;display:block}
+.person img:first-child{position:relative}
+.p2{opacity:0;animation:p2 7.5s infinite}
+.p3{opacity:0;animation:p3 7.5s infinite}
+@keyframes p2{0%,28%{opacity:0}34%,70%{opacity:1}71%,100%{opacity:0}}
+@keyframes p3{0%,60%{opacity:0}66%,96%{opacity:1}100%{opacity:0}}
+.say{position:absolute;left:24px;top:26px;right:24px;height:48px}
+.say span{position:absolute;left:0;top:0;background:var(--cream);color:var(--esp);font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.5vw,19px);padding:11px 20px;border-radius:999px 999px 999px 8px;opacity:0;animation-duration:7.5s;animation-iteration-count:infinite;white-space:nowrap}
+.s1{animation-name:b1}.s2{animation-name:b2}.s3{animation-name:b3}
+@keyframes b1{0%,30%{opacity:1;transform:none}34%,96%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
+@keyframes b2{0%,30%{opacity:0;transform:translateY(8px)}34%,60%{opacity:1;transform:none}64%,100%{opacity:0;transform:translateY(8px)}}
+@keyframes b3{0%,62%{opacity:0;transform:translateY(8px)}66%,94%{opacity:1;transform:none}98%,100%{opacity:0;transform:translateY(8px)}}
+.bars{position:absolute;right:24px;bottom:24px;display:flex;gap:6px}
+.bars i{width:22px;height:3px;border-radius:2px;background:rgba(26,17,12,.25);position:relative;overflow:hidden}
+.bars b{position:absolute;inset:0;background:var(--ink);opacity:0;animation-duration:7.5s;animation-iteration-count:infinite}
+.bars b:nth-child(1){animation-name:b1}
+
+@media (max-width:1080px){
+  .grid{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:minmax(200px,auto)}
+  .grid>.card{grid-column:auto!important;grid-row:auto!important}
+  .grid>.hero{grid-column:1/-1!important;grid-row:1!important;height:620px}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .grid>.hero{height:560px}
+}
+@media (prefers-reduced-motion:reduce){.p2,.p3,.eq i,.steam path,.say span{animation:none}.s1{opacity:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></symbol>
+<symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></symbol>
+<symbol id="i-inf" viewBox="0 0 24 24"><path d="M12 12c-2-3-4-4.5-6-4.5a4.5 4.5 0 0 0 0 9c2 0 4-1.5 6-4.5zm0 0c2 3 4 4.5 6 4.5a4.5 4.5 0 0 0 0-9c-2 0-4 1.5-6 4.5z"/></symbol>
+<symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0V8zM12 17v4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+<symbol id="i-bake" viewBox="0 0 24 24"><path d="M4 15a8 8 0 0 1 16 0v3H4z"/><path d="M12 7v3"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+</defs></svg>
+
+<section class="why" id="why">
+  <div class="head">
+    <div>
+      <p class="label">Why you’ll stay</p>
+      <h2>Made for long <em>conversations</em> and slow cups.</h2>
+    </div>
+    <p class="lead">Everything you need to work, meet, or do nothing at all.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card sand c1" style="--d:0ms">
+      <div class="ic"><svg><use href="#i-music"/></svg></div>
+      <div>
+        <div class="eq"><i></i><i style="animation-delay:-.2s"></i><i style="animation-delay:-.7s"></i><i style="animation-delay:-.4s"></i><i style="animation-delay:-.9s"></i><i style="animation-delay:-.1s"></i><i style="animation-delay:-.6s"></i><i style="animation-delay:-.3s"></i></div>
+        <h3 style="margin-top:22px">Ambience</h3>
+        <p>Warm lighting, soft jazz, and cozy corners designed for lingering.</p>
+      </div>
+    </article>
+
+    <article class="card hero on" id="hero" aria-label="A happy guest enjoying coffee">
+      <div class="ring"></div><div class="disc"></div>
+      <div class="person">
+        <img src="person-hold.webp" alt="Man holding a cup of coffee">
+        <img class="p2" src="person-sip.webp" alt="Man sipping coffee">
+        <img class="p3" src="person-joy.webp" alt="Man celebrating with coffee">
+      </div>
+      <div class="say"><span class="s1">Fresh out of the grinder</span><span class="s2">Mmm… that aroma</span><span class="s3">Best coffee in town!</span></div>
+    </article>
+
+    <article class="card car c2" style="--d:120ms">
+      <svg class="steam" viewBox="0 0 70 70" aria-hidden="true"><path d="M18 62q-9-12 0-24t0-24"/><path d="M35 62q-9-12 0-24t0-24"/><path d="M52 62q-9-12 0-24t0-24"/></svg>
+      <div class="ic"><svg><use href="#i-coffee"/></svg></div>
+      <div><h3>Single-origin coffee</h3><p>Roasted in-house, brewed your way.</p></div>
+    </article>
+
+    <article class="card sand c3" style="--d:60ms"><div class="ic"><svg><use href="#i-wifi"/></svg></div><div><h3>Free fast Wi-Fi</h3><p>Work without limits.</p></div></article>
+    <article class="card dark c4" style="--d:140ms"><div class="ic"><svg><use href="#i-inf"/></svg></div><div><h3>Unlimited stay</h3><p>No timers. Stay all day.</p></div></article>
+    <article class="card dark c5" style="--d:100ms"><div class="ic"><svg><use href="#i-plug"/></svg></div><div><h3>Power at every seat</h3><p>Charge while you create.</p></div></article>
+    <article class="card car c6" style="--d:180ms"><div class="ic"><svg><use href="#i-heart"/></svg></div><div><h3>Pet friendly</h3><p>Furry friends welcome.</p></div></article>
+    <article class="card sand c7" style="--d:140ms"><div class="ic"><svg><use href="#i-bake"/></svg></div><div><h3>Fresh bakes daily</h3><p>Croissants, cookies, and slow-fermented sourdough.</p></div></article>
+    <article class="card dark c8" style="--d:220ms"><div class="ic"><svg><use href="#i-moon"/></svg></div><div><h3>Open late</h3><p>Quiet evenings until 10pm.</p></div></article>
+  </div>
+</section>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.card:not(.hero)').forEach(c=>io.observe(c));
+</script>
+</body>
+</html>
