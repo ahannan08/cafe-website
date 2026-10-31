@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brew&amp;Bean – Banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--pad:clamp(20px,5vw,72px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+p{margin:0}
+.hero{--bg:#3B2A20;--fg:#F6EFE6;--disc:#C98B4A;--acc:#C98B4A;position:relative;height:max(100svh,720px);overflow:hidden;background:var(--bg);color:var(--fg);transition:background-color .9s,color .9s}
+
+.nav{position:absolute;z-index:10;top:calc(env(safe-area-inset-top,0px) + 18px);left:50%;transform:translateX(-50%);width:min(1100px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;padding:8px 10px 8px 24px;border-radius:999px;border:1px solid color-mix(in srgb,var(--fg) 22%,transparent);background:color-mix(in srgb,var(--fg) 7%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .9s}
+.logo{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:inherit;text-decoration:none}
+.logo em{font-style:normal;color:var(--acc)}
+.nav nav{display:flex;gap:30px;font-size:14px}
+.nav nav a{color:inherit;text-decoration:none;opacity:.8}
+.nav nav a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--fg);color:var(--bg);padding:14px 24px;border-radius:999px;font-weight:500;font-size:14px;text-decoration:none;border:0;cursor:pointer;transition:transform .25s,background-color .9s,color .9s}
+.btn:hover{transform:translateY(-2px)}
+.btn-sm{padding:9px 18px;font-size:13px}
+
+.word{position:absolute;z-index:1;left:0;right:0;top:15%;text-align:center;font-family:'Anton',sans-serif;font-size:clamp(84px,17vw,270px);line-height:.92;text-transform:uppercase;white-space:nowrap;letter-spacing:.01em;pointer-events:none}
+.l{display:inline-block;opacity:0;transform:translateY(55%) rotate(4deg);transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.in .l{opacity:1;transform:none}
+
+.disc{position:absolute;z-index:2;left:50%;bottom:17%;width:min(44vw,62vh);height:min(22vw,31vh);border-radius:0 0 999px 999px;background:var(--disc);transform:translateX(-50%) scaleY(0);transform-origin:50% 0;transition:transform .9s cubic-bezier(.2,.8,.2,1) .15s,background-color .9s}
+.in .disc{transform:translateX(-50%) scaleY(1)}
+.drink{position:absolute;z-index:3;left:50%;bottom:calc(17% - 14px);height:min(64%,66vw + 90px);aspect-ratio:3/5;transform:translateX(-50%)}
+.drink svg{height:100%;width:100%;overflow:visible;opacity:0;transform:translateY(-70px) scale(.92);transition:transform 1s cubic-bezier(.2,.9,.3,1.2) .2s,opacity .5s .2s}
+.in .drink svg{opacity:1;transform:none;animation:bob 5s ease-in-out 1.3s infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.steam path{animation:steam 3s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.8s}.steam path:nth-child(3){animation-delay:1.6s}
+@keyframes steam{0%{opacity:0;transform:translateY(14px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-16px)}}
+
+.left{position:absolute;z-index:4;left:var(--pad);bottom:22%;width:min(300px,28vw)}
+.kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.blurb{font-size:15px;line-height:1.65;opacity:.9}
+.method{margin:14px 0 22px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.65}
+.row{display:flex;align-items:center;gap:10px}
+.arr{width:44px;height:44px;border-radius:50%;border:1px solid color-mix(in srgb,var(--fg) 45%,transparent);background:transparent;color:inherit;font-size:17px;cursor:pointer;transition:background-color .25s,color .25s}
+.arr:hover{background:var(--fg);color:var(--bg)}
+.right{position:absolute;z-index:4;right:var(--pad);bottom:22%;text-align:center}
+.stamp{width:clamp(100px,10vw,150px);display:block;margin:0 auto 14px;color:var(--fg);animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.price small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+.price b{font-family:'Anton',sans-serif;font-weight:400;font-size:34px;letter-spacing:.02em}
+
+.strip{position:absolute;z-index:4;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 30px);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:0 var(--pad);font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(18px,2.6vw,38px);letter-spacing:.03em}
+.strip span{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.in .strip span{opacity:1;transform:none}
+.strip i{font-style:normal;color:var(--acc);font-size:.8em}
+
+@media (max-width:860px){
+  .nav nav{display:none}
+  .word{top:17%}
+  .drink{height:40%;bottom:calc(30% - 10px)}
+  .disc{bottom:30%;width:70vw;height:35vw}
+  .left{left:20px;right:20px;width:auto;bottom:88px;text-align:center}
+  .blurb,.method{display:none}
+  .row{justify-content:center}
+  .right{right:16px;bottom:auto;top:84px}
+  .stamp{width:74px;margin:0}
+  .price{display:none}
+  .strip{display:none}
+}
+@media (prefers-reduced-motion:reduce){.in .drink svg,.stamp,.steam path{animation:none}}
+</style>
+</head>
+<body>
+<section class="hero" id="hero">
+  <header class="nav">
+    <a class="logo" href="#">Brew<em>&amp;</em>Bean</a>
+    <nav><a href="#">Menu</a><a href="#">Our story</a><a href="#">Visit</a></nav>
+    <a class="btn btn-sm" href="#">Reserve</a>
+  </header>
+  <div class="word" id="word"></div>
+  <div class="disc"></div>
+  <div class="drink" id="drink"></div>
+  <div class="left">
+    <p class="kicker">How it’s made</p>
+    <p class="blurb" id="blurb"></p>
+    <p class="method" id="method"></p>
+    <div class="row">
+      <a class="btn" href="#">View full menu &rarr;</a>
+      <button class="arr" id="prev" aria-label="Previous drink">&larr;</button>
+      <button class="arr" id="next" aria-label="Next drink">&rarr;</button>
+    </div>
+  </div>
+  <div class="right">
+    <svg class="stamp" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="cp" d="M80 80m-62 0a62 62 0 1 1 124 0a62 62 0 1 1-124 0"/></defs><text font-size="11" fill="currentColor" textLength="384" lengthAdjust="spacing"><textPath href="#cp">ROASTED IN-HOUSE ✦ SMALL BATCH ✦ FRESH DAILY ✦</textPath></text><path d="M80 62l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="currentColor"/></svg>
+    <div class="price"><small>from</small><b id="price"></b></div>
+  </div>
+  <div class="strip" id="strip"></div>
+</section>
+
+<script>
+/* Stand-in for your JSON file */
+const DATA=[
+ {name:"Cappuccino",type:"mug",bg:"#3B2A20",fg:"#F6EFE6",disc:"#C98B4A",acc:"#C98B4A",blurb:"Velvety steamed milk over a double espresso, finished with a cloud of micro-foam.",method:"Double shot · milk steamed to 65°C",ing:["Double espresso","Steamed milk","Micro-foam"],price:"₹220"},
+ {name:"Iced Latte",type:"glass",bg:"#C98B4A",fg:"#2A1D16",disc:"#F6EFE6",acc:"#3B2A20",layers:[{y:150,c:"#F1E2C6"},{y:250,c:"#D3A978"},{y:350,c:"#7A4A2A"}],ice:[[70,120,-12],[140,150,16],[100,230,8]],blurb:"Chilled espresso poured over hand-cut ice and silky cold milk, lightly sweetened.",method:"Poured over ice · ready in 2 min",ing:["Espresso","Cold milk","Ice"],price:"₹240"},
+ {name:"Cold Brew",type:"glass",bg:"#F6EFE6",fg:"#3B2A20",disc:"#8A6A52",acc:"#C98B4A",layers:[{y:160,c:"#EBDCC2"},{y:215,c:"#3A2216"}],ice:[[75,150,10],[145,190,-14],[95,290,20]],blurb:"Steeped for 18 hours in cold water. Smooth, low-acid and quietly chocolatey.",method:"Steeped 18 hours · served over ice",ing:["Coarse grounds","Filtered water","Cold cream"],price:"₹260"}
+];
+
+const wave=(y,a=14)=>`M-20 ${y}Q40 ${y-a} 100 ${y}T220 ${y}T340 ${y}V560H-20Z`;
+function glass(d){
+  const g='M40 90H260L232 490Q230 506 214 506H86Q70 506 68 490Z';
+  return `<svg viewBox="0 -40 300 570"><defs><clipPath id="gc"><path d="${g}"/></clipPath></defs>
+  <path d="${g}" fill="#fff" fill-opacity=".18"/>
+  <g clip-path="url(#gc)">${d.layers.map(l=>`<path d="${wave(l.y)}" fill="${l.c}"/>`).join('')}
+  ${d.ice.map(([x,y,r])=>`<rect x="${x}" y="${y}" width="62" height="62" rx="13" fill="#fff" fill-opacity=".4" transform="rotate(${r} ${x+31} ${y+31})"/>`).join('')}</g>
+  <rect x="172" y="-40" width="14" height="340" rx="7" fill="#E0A039" transform="rotate(10 179 130)"/>
+  <path d="${g}" fill="none" stroke="#3B2A20" stroke-opacity=".22" stroke-width="7"/>
+  <path d="${g}" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+  <path d="M62 120L82 460" stroke="#fff" stroke-opacity=".5" stroke-width="10" stroke-linecap="round"/></svg>`;
+}
+function mug(){
+  return `<svg viewBox="0 -90 400 470"><g class="steam" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="7" stroke-linecap="round"><path d="M140 70q-20-30 0-55t0-55"/><path d="M200 70q-20-30 0-55t0-55"/><path d="M260 70q-20-30 0-55t0-55"/></g>
+  <ellipse cx="180" cy="345" rx="175" ry="24" fill="#E7DAC8"/>
+  <path d="M310 150h30a46 46 0 0 1 0 92h-34" fill="none" stroke="#F6EFE6" stroke-width="22" stroke-linecap="round"/>
+  <path d="M45 110H315V200C315 285 260 335 180 335S45 285 45 200Z" fill="#F6EFE6"/>
+  <path d="M255 110H315V200C315 285 260 335 180 335C230 300 255 240 255 110Z" fill="#000" fill-opacity=".07"/>
+  <ellipse cx="180" cy="110" rx="135" ry="30" fill="#EADBC4"/><ellipse cx="180" cy="112" rx="116" ry="23" fill="#A8693A"/>
+  <path d="M180 128C140 108 150 90 180 100 210 90 220 108 180 128Z" fill="#F6EFE6"/></svg>`;
+}
+
+const $=id=>document.getElementById(id), hero=$('hero');
+let cur=0,timer;
+function render(i){
+  cur=(i+DATA.length)%DATA.length;
+  const d=DATA[cur];
+  hero.classList.remove('in');
+  hero.style.setProperty('--bg',d.bg);hero.style.setProperty('--fg',d.fg);hero.style.setProperty('--disc',d.disc);hero.style.setProperty('--acc',d.acc);
+  $('word').innerHTML=[...d.name].map((c,k)=>`<span class="l" style="transition-delay:${k*55}ms">${c===' '?'&nbsp;':c}</span>`).join('');
+  $('drink').innerHTML=d.type==='mug'?mug():glass(d);
+  $('blurb').textContent=d.blurb;$('method').textContent=d.method;$('price').textContent=d.price;
+  $('strip').innerHTML=d.ing.map((t,k)=>`<span style="transition-delay:${500+k*120}ms">${t}</span>`).join('<span><i>✦</i></span>');
+  void hero.offsetWidth;
+  requestAnimationFrame(()=>hero.classList.add('in'));
+  clearInterval(timer);timer=setInterval(()=>render(cur+1),6500);
+}
+$('prev').onclick=()=>render(cur-1);$('next').onclick=()=>render(cur+1);
+render(0);
+</script>
+</body>
+</html>

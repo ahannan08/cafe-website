@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --espresso: #3b2a20;
+  --ink: #1a110c;
+  --cream: #f6efe6;
+  --sand: #ebdfce;
+  --caramel: #c98b4a;
+  --mocha: #8a6a52;
+  --section-pad: clamp(20px, 6vw, 80px);
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-espresso: var(--espresso);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-caramel: var(--caramel);
+  --color-mocha: var(--mocha);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+em {
+  font-style: italic;
+  color: var(--caramel);
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mocha);
+}
+
+/* Hero slides */
+.hero-slide {
+  opacity: 0;
+  transform: scale(1.1);
+  transition:
+    opacity 1.4s ease,
+    transform 8s ease-out;
+}
+
+.hero-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-slide-f0 {
+  background-image:
+    radial-gradient(55% 55% at 72% 30%, #c98b4a 0%, transparent 62%),
+    radial-gradient(60% 60% at 15% 85%, #6b4a35 0%, transparent 65%);
+}
+
+.hero-slide-f1 {
+  background-image:
+    radial-gradient(50% 60% at 25% 35%, #b9783a 0%, transparent 60%),
+    radial-gradient(55% 55% at 85% 90%, #8a6a52 0%, transparent 65%);
+}
+
+.hero-slide-f2 {
+  background-image:
+    radial-gradient(60% 50% at 60% 20%, #d9a56a 0%, transparent 60%),
+    radial-gradient(50% 60% at 10% 70%, #4e3626 0%, transparent 65%);
+}
+
+.hero-shade {
+  background: linear-gradient(
+    to top,
+    rgba(20, 13, 9, 0.88) 5%,
+    rgba(20, 13, 9, 0.2) 55%,
+    rgba(20, 13, 9, 0.55)
+  );
+}
+
+.hero-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+}
+
+.hero-word > span {
+  transform: translateY(115%);
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-headline-in .hero-word > span {
+  transform: none;
+}
+
+.hero-bar-track {
+  padding: 10px 0;
+  background-clip: content-box;
+}
+
+.hero-bar-done .hero-bar-fill {
+  width: 100%;
+}
+
+.hero-bar-run .hero-bar-fill {
+  animation: hero-bar-fill 6.5s linear forwards;
+}
+
+@keyframes hero-bar-fill {
+  to {
+    width: 100%;
+  }
+}
+
+.hero-card-big-glow::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(201, 139, 74, 0.45),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Scroll reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.9s,
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.scroll-reveal-on {
+  opacity: 1;
+  transform: none;
+}
+
+/* Marquee */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.marquee-track {
+  animation: marquee-slide 55s linear infinite;
+}
+
+.marquee-track-reverse {
+  animation: marquee-slide 65s linear infinite reverse;
+}
+
+.marquee-mask:hover .marquee-track,
+.marquee-mask:hover .marquee-track-reverse {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none;
+  }
+
+  .hero-slide {
+    transition: opacity 0.4s;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
