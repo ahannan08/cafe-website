@@ -46,7 +46,7 @@ function MenuCard({
         {item.p}
       </p>
       <Link
-        href="#visit"
+        href="/contact"
         className={cn(
           "block rounded-full border border-espresso/14 bg-white px-4 py-4 font-[family-name:var(--font-anton)] text-[17px] tracking-[0.06em] uppercase no-underline text-espresso transition-[background-color,color,border-color] duration-300",
           "group-hover/card:border-espresso group-hover/card:bg-espresso group-hover/card:text-cream",
@@ -100,7 +100,7 @@ export function MenuSection() {
 
         <div
           key={activeTab}
-          className="grid grid-cols-1 gap-[22px] min-[601px]:grid-cols-2 min-[901px]:grid-cols-3"
+          className="grid grid-cols-1 gap-[22px] min-[601px]:grid-cols-2 min-[901px]:grid-cols-3 min-[1201px]:grid-cols-4"
           role="tabpanel"
         >
           {category.items.map((item, i) => (
@@ -115,10 +115,10 @@ export function MenuSection() {
 
         <div className="mt-[38px] text-center">
           <Link
-            href="#menu"
+            href="/menu"
             className="inline-block rounded-full bg-caramel px-8 py-4 text-[15px] font-medium text-ink no-underline transition-transform duration-250 hover:-translate-y-0.5"
           >
-            View full menu →
+            See full menu page →
           </Link>
         </div>
       </div>

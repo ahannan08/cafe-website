@@ -3,19 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { mainNavLinks } from "@/lib/site-nav";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Menu", href: "/menu" },
-  { label: "Reviews", href: "/reviews" },
-] as const;
+import { ReserveModal } from "./ReserveModal";
 
 export function Nav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [onBanner, setOnBanner] = useState(isHome);
+  const [reserveOpen, setReserveOpen] = useState(false);
 
   useEffect(() => {
     if (!isHome) {
@@ -38,54 +34,67 @@ export function Nav() {
   }, [isHome, pathname]);
 
   return (
-    <header
-      className={cn(
-        "fixed top-[calc(env(safe-area-inset-top,0px)+18px)] left-1/2 z-20 flex w-[min(1100px,calc(100%-28px))] -translate-x-1/2 items-center justify-between rounded-full border py-2 pr-2.5 pl-6 backdrop-blur-[12px] transition-[border-color,background-color,color] duration-[900ms]",
-        onBanner
-          ? "border-[color-mix(in_srgb,var(--banner-fg)_22%,transparent)] bg-[color-mix(in_srgb,var(--banner-fg)_7%,transparent)] text-[var(--banner-fg)]"
-          : "border-cream/16 bg-ink/35 text-cream",
-      )}
-    >
-      <Link
-        href="/"
-        className="font-[family-name:var(--font-anton)] text-[22px] tracking-[0.04em] uppercase no-underline"
-      >
-        Brew
-        <em
-          className={cn(
-            "not-italic",
-            onBanner ? "text-[var(--banner-acc)]" : "text-caramel",
-          )}
-        >
-          &amp;
-        </em>
-        Bean
-      </Link>
-      <nav className="hidden items-center gap-[30px] text-sm min-[861px]:flex">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              "opacity-80 transition-opacity hover:opacity-100",
-              pathname === link.href && "opacity-100",
-            )}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
-      <Link
-        href="/#visit"
+    <>
+      <header
         className={cn(
-          "inline-flex items-center rounded-full border-0 px-[18px] py-2 text-[13px] font-medium no-underline transition-[transform,background-color,color] duration-[900ms] hover:-translate-y-0.5",
+          "fixed top-[calc(env(safe-area-inset-top,0px)+18px)] left-1/2 z-20 flex w-[min(1100px,calc(100%-28px))] -translate-x-1/2 items-center gap-2 rounded-full border py-2 pr-2 pl-3 backdrop-blur-[12px] transition-[border-color,background-color,color] duration-[900ms] sm:gap-3 sm:pl-5 sm:pr-2",
           onBanner
-            ? "bg-[var(--banner-fg)] text-[var(--banner-bg)]"
-            : "bg-caramel text-ink hover:bg-[#d99a58]",
+            ? "border-[color-mix(in_srgb,var(--banner-fg)_22%,transparent)] bg-[color-mix(in_srgb,var(--banner-fg)_7%,transparent)] text-[var(--banner-fg)]"
+            : "border-cream/16 bg-ink/35 text-cream",
         )}
       >
-        Reserve
-      </Link>
-    </header>
+        <Link
+          href="/"
+          className="shrink-0 font-[family-name:var(--font-anton)] text-base tracking-[0.04em] uppercase no-underline sm:text-[20px]"
+        >
+          Brew
+          <em
+            className={cn(
+              "not-italic",
+              onBanner ? "text-[var(--banner-acc)]" : "text-caramel",
+            )}
+          >
+            &amp;
+          </em>
+          Bean
+        </Link>
+
+        <nav
+          className="flex min-w-0 flex-1 items-center justify-center gap-2.5 overflow-x-auto text-[10px] whitespace-nowrap [scrollbar-width:none] sm:gap-4 sm:text-xs md:text-sm [&::-webkit-scrollbar]:hidden"
+          aria-label="Main"
+        >
+          {mainNavLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "shrink-0 opacity-80 transition-opacity hover:opacity-100",
+                pathname === link.href && "font-medium opacity-100 text-caramel",
+                pathname === link.href &&
+                  onBanner &&
+                  "text-[var(--banner-acc)]",
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <button
+          type="button"
+          onClick={() => setReserveOpen(true)}
+          className={cn(
+            "shrink-0 cursor-pointer rounded-full border-0 px-3 py-2 text-[10px] font-medium transition-[transform,background-color,color] sm:px-4 sm:text-xs md:text-[13px] hover:-translate-y-0.5",
+            onBanner
+              ? "bg-[var(--banner-fg)] text-[var(--banner-bg)]"
+              : "bg-caramel text-ink hover:bg-[#d99a58]",
+          )}
+        >
+          Reserve
+        </button>
+      </header>
+
+      <ReserveModal open={reserveOpen} onClose={() => setReserveOpen(false)} />
+    </>
   );
 }

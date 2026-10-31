@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MenuSection } from "@/components/MenuSection";
+import { MenuPageView } from "@/components/MenuPageView";
 import { PageShell } from "@/components/PageShell";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function MenuPage() {
   return (
     <PageShell offsetNav>
-      <MenuSection />
+      <MenuPageView />
     </PageShell>
   );
 }

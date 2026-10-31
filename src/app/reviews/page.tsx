@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/PageShell";
-import { ReviewsSection } from "@/components/ReviewsSection";
+import { ReviewsPageView } from "@/components/ReviewsPageView";
 
 export const metadata: Metadata = {
   title: "Reviews – Brew&Bean",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ReviewsPage() {
   return (
     <PageShell offsetNav>
-      <ReviewsSection />
+      <ReviewsPageView />
     </PageShell>
   );
 }
