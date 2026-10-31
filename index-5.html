@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brew&amp;Bean – Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--esp:#3B2A20;--cream:#F6EFE6;--paper:#FBF7F1;--sand:#F0E6D6;--car:#C98B4A;--moc:#8A6A52;box-sizing:border-box;color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--cream);color:var(--esp);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h2,p{margin:0}
+.menu{padding:clamp(24px,4vw,56px) clamp(14px,3vw,48px)}
+.panel{max-width:1240px;margin:0 auto;background:var(--paper);border:1px solid rgba(59,42,32,.08);border-radius:clamp(28px,4vw,48px);padding:clamp(32px,5vw,64px) clamp(18px,4vw,56px) clamp(32px,4vw,52px);box-shadow:0 30px 60px -30px rgba(59,42,32,.25)}
+h2{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;text-align:center;font-size:clamp(46px,8.5vw,124px);line-height:.95;letter-spacing:.005em}
+h2 em{font-style:normal;color:var(--car)}
+.tabs{display:flex;width:max-content;max-width:100%;margin:clamp(22px,3vw,40px) auto clamp(28px,4vw,52px);border:1px solid rgba(59,42,32,.12);border-radius:999px;background:#fff;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:0;background:transparent;color:var(--esp);font:500 13px/1 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:18px 28px;border-radius:999px;cursor:pointer;transition:background-color .35s,color .35s}
+.tab:hover{background:var(--sand)}
+.tab.on{background:var(--esp);color:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid rgba(59,42,32,.08);border-radius:32px;padding:14px 14px 18px;text-align:center;opacity:0;transform:translateY(26px);animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards;transition:box-shadow .35s,transform .35s}
+.card:hover{box-shadow:0 22px 40px -22px rgba(59,42,32,.35)}
+@keyframes rise{to{opacity:1;transform:none}}
+.img{position:relative;height:clamp(250px,26vw,330px);border-radius:24px;background:var(--sand);display:grid;place-items:center;overflow:hidden}
+.img::before{content:"";position:absolute;width:62%;aspect-ratio:1;border-radius:50%;background:var(--car);opacity:.16;transition:transform .5s,opacity .5s}
+.card:hover .img::before{transform:scale(1.15);opacity:.28}
+.img svg{position:relative;height:84%;width:auto;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover .img svg{transform:translateY(-8px) rotate(-3deg)}
+.rate{position:absolute;top:14px;right:14px;background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500;display:flex;gap:5px;align-items:center}
+.rate i{font-style:normal;color:var(--car)}
+.name{font-family:'Anton',sans-serif;font-weight:400;font-size:26px;text-transform:uppercase;letter-spacing:.02em;margin:22px 0 4px}
+.note{font-size:13px;color:var(--moc);margin-bottom:6px}
+.price{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.03em;color:var(--car);margin-bottom:16px}
+.order{display:block;padding:16px;border-radius:999px;border:1px solid rgba(59,42,32,.14);font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--esp);background:#fff;transition:background-color .3s,color .3s,border-color .3s}
+.card:hover .order,.card:first-child .order{background:var(--esp);color:var(--cream);border-color:var(--esp)}
+.more{text-align:center;margin-top:38px}
+.more a{display:inline-block;padding:16px 32px;border-radius:999px;background:var(--car);color:#1A110C;font-weight:500;font-size:15px;text-decoration:none;transition:transform .25s}
+.more a:hover{transform:translateY(-2px)}
+@media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}.tab{padding:15px 20px}}
+@media (prefers-reduced-motion:reduce){.card{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<section class="menu" id="menu">
+  <div class="panel">
+    <h2>Explore our <em>menu</em></h2>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="grid" id="grid"></div>
+    <div class="more"><a href="#">View full menu &rarr;</a></div>
+  </div>
+</section>
+
+<script>
+/* Stand-in for your JSON file */
+const MENU=[
+ {tab:"Signature Blends",items:[
+  {n:"Caramel Cloud",p:"₹260",r:4.9,s:"caramel",d:"Espresso, caramel, silky milk"},
+  {n:"Cappuccino",p:"₹220",r:4.9,s:"cap",d:"Double shot, velvety foam"},
+  {n:"Mocha Noir",p:"₹280",r:4.8,s:"mochaI",d:"Dark chocolate, espresso, cream"}]},
+ {tab:"Hot Coffee",items:[
+  {n:"Flat White",p:"₹230",r:4.8,s:"flat",d:"Ristretto, micro-foam milk"},
+  {n:"Cappuccino",p:"₹220",r:4.9,s:"cap",d:"Double shot, velvety foam"},
+  {n:"Hot Mocha",p:"₹250",r:4.7,s:"mocha",d:"Espresso, cocoa, steamed milk"}]},
+ {tab:"Iced Coffee",items:[
+  {n:"Iced Latte",p:"₹240",r:4.9,s:"il",d:"Espresso over ice and cold milk"},
+  {n:"Iced Caramel",p:"₹270",r:4.8,s:"caramel",d:"Caramel drizzle, cold milk"},
+  {n:"Iced Mocha",p:"₹280",r:4.7,s:"mochaI",d:"Chocolate, espresso, ice"}]},
+ {tab:"Cold Brew",items:[
+  {n:"Classic Cold Brew",p:"₹260",r:4.9,s:"cb",d:"Steeped 18 hours, low acid"},
+  {n:"Cream Cold Brew",p:"₹290",r:4.8,s:"cbc",d:"Cold brew, vanilla cold cream"},
+  {n:"Cold Brew Tonic",p:"₹280",r:4.7,s:"cb",d:"Cold brew over sparkling tonic"}]}
+];
+const STY={
+ cap:{m:1,c:"#A8693A"},flat:{m:1,c:"#8A5430"},mocha:{m:1,c:"#4E2F20"},
+ il:{L:[["#F1E2C6",150],["#D3A978",250],["#7A4A2A",350]],straw:1},
+ caramel:{L:[["#F4E3C3",150],["#D69A55",230],["#8A5430",330]],straw:1},
+ mochaI:{L:[["#E9D3C0",150],["#8A5A44",250],["#3B2A20",360]],straw:1},
+ cb:{L:[["#E6D5B8",170],["#3A2216",215]]},
+ cbc:{L:[["#F6EBD6",160],["#C79A62",205],["#3A2216",250]],straw:1}
+};
+const wave=(y,a=14)=>`M-20 ${y}Q40 ${y-a} 100 ${y}T220 ${y}T340 ${y}V560H-20Z`;
+function glass(s,id){
+  const g='M40 90H260L232 490Q230 506 214 506H86Q70 506 68 490Z';
+  const ice=[[70,120,-12],[140,150,16],[100,250,8],[150,330,-10]];
+  return `<svg viewBox="0 -40 300 570"><defs><clipPath id="c${id}"><path d="${g}"/></clipPath></defs>
+  <path d="${g}" fill="#fff" fill-opacity=".5"/>
+  <g clip-path="url(#c${id})">${s.L.map(l=>`<path d="${wave(l[1])}" fill="${l[0]}"/>`).join('')}
+  ${ice.map(([x,y,r])=>`<rect x="${x}" y="${y}" width="62" height="62" rx="13" fill="#fff" fill-opacity=".38" transform="rotate(${r} ${x+31} ${y+31})"/>`).join('')}</g>
+  ${s.straw?`<rect x="172" y="-40" width="14" height="340" rx="7" fill="#E0A039" transform="rotate(10 179 130)"/>`:''}
+  <path d="${g}" fill="none" stroke="#3B2A20" stroke-opacity=".25" stroke-width="6"/>
+  <path d="M62 120L82 460" stroke="#fff" stroke-opacity=".7" stroke-width="10" stroke-linecap="round"/></svg>`;
+}
+function mug(c){
+  return `<svg viewBox="0 0 400 380"><ellipse cx="180" cy="345" rx="175" ry="24" fill="#E3D6C2"/>
+  <path d="M310 150h30a46 46 0 0 1 0 92h-34" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+  <path d="M45 110H315V200C315 285 260 335 180 335S45 285 45 200Z" fill="#fff"/>
+  <path d="M255 110H315V200C315 285 260 335 180 335C230 300 255 240 255 110Z" fill="#000" fill-opacity=".07"/>
+  <ellipse cx="180" cy="110" rx="135" ry="30" fill="#EADBC4"/><ellipse cx="180" cy="112" rx="116" ry="23" fill="${c}"/>
+  <path d="M180 128C140 108 150 90 180 100 210 90 220 108 180 128Z" fill="#F6EFE6"/></svg>`;
+}
+const $=id=>document.getElementById(id);
+function show(k){
+  [...$('tabs').children].forEach((b,i)=>{b.classList.toggle('on',i===k);b.setAttribute('aria-selected',i===k)});
+  $('grid').innerHTML=MENU[k].items.map((it,i)=>{
+    const s=STY[it.s];
+    return `<article class="card" style="animation-delay:${i*110}ms">
+    <div class="img"><span class="rate"><i>★</i>${it.r}</span>${s.m?mug(s.c):glass(s,k+'_'+i)}</div>
+    <h3 class="name">${it.n}</h3><p class="note">${it.d}</p><p class="price">${it.p}</p>
+    <a class="order" href="#">Order now</a></article>`}).join('');
+}
+$('tabs').innerHTML=MENU.map((m,i)=>`<button class="tab" role="tab">${m.tab}</button>`).join('');
+[...$('tabs').children].forEach((b,i)=>b.onclick=()=>show(i));
+show(0);
+</script>
+</body>
+</html>

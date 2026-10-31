@@ -47,6 +47,9 @@ export function Nav() {
         <Link href="#home" className="opacity-80 transition-opacity hover:opacity-100">
           Home
         </Link>
+        <Link href="#menu" className="opacity-80 transition-opacity hover:opacity-100">
+          Menu
+        </Link>
         <Link href="#offer" className="opacity-80 transition-opacity hover:opacity-100">
           Why us
         </Link>

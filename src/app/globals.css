@@ -13,6 +13,7 @@
   --banner-fg: #f6efe6;
   --banner-disc: #c98b4a;
   --banner-acc: #c98b4a;
+  --paper: #fbf7f1;
   color-scheme: light;
 }
 
@@ -130,6 +131,37 @@ em {
   }
 }
 
+.menu-card-rise {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: menu-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes menu-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-card-img::before {
+  content: "";
+  position: absolute;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--caramel);
+  opacity: 0.16;
+  transition:
+    transform 0.5s,
+    opacity 0.5s;
+}
+
+.group\/card:hover .menu-card-img::before {
+  transform: scale(1.15);
+  opacity: 0.28;
+}
+
 .hero-card-big-glow::after {
   content: "";
   position: absolute;
@@ -205,8 +237,11 @@ em {
 
   .banner-drink-in,
   .banner-stamp,
-  .banner-steam path {
+  .banner-steam path,
+  .menu-card-rise {
     animation: none;
+    opacity: 1;
+    transform: none;
   }
 
   .scroll-reveal {

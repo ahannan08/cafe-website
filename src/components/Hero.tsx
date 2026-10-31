@@ -128,7 +128,7 @@ export function Hero() {
         </p>
         <div className="flex items-center gap-2.5 max-[860px]:justify-center">
           <Link
-            href="#offer"
+            href="#menu"
             className="inline-flex items-center gap-2.5 rounded-full border-0 bg-[var(--banner-fg)] px-6 py-3.5 text-sm font-medium text-[var(--banner-bg)] no-underline transition-[transform,background-color,color] duration-250 hover:-translate-y-0.5"
           >
             View full menu →
