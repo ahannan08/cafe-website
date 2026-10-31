@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About – Brew&amp;Bean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--esp:#3B2A20;--ink:#1A110C;--cream:#F6EFE6;--sand:#EBDFCE;--car:#C98B4A;--moc:#8A6A52;--serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--pad:clamp(16px,5vw,72px);box-sizing:border-box;color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--esp);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,h4,p{margin:0}
+em{font-style:italic;color:var(--car)}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--moc);margin-bottom:14px}
+.btn{display:inline-block;background:var(--car);color:var(--ink);padding:9px 18px;border-radius:999px;font-weight:500;font-size:13px;text-decoration:none}
+.sec{padding:clamp(72px,10vw,130px) var(--pad);max-width:1400px;margin:0 auto}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,56px)}
+.sh h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,5vw,64px);line-height:1.05;letter-spacing:-.03em;max-width:720px}
+.lead{max-width:300px;color:var(--moc)}
+
+.nav{position:fixed;z-index:50;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translateX(-50%);width:min(1100px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;padding:8px 10px 8px 24px;border-radius:999px;background:rgba(26,17,12,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(246,239,230,.16);color:var(--cream)}
+.logo{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;color:inherit}
+.logo i{font-style:normal;color:var(--car)}
+.nav nav{display:flex;gap:28px;font-size:14px}
+.nav nav a{color:inherit;text-decoration:none;opacity:.75}
+.nav nav a:hover,.nav nav a.on{opacity:1;color:var(--car)}
+
+.hero{position:relative;background:var(--esp);color:var(--cream);min-height:100svh;padding:clamp(110px,14vw,150px) var(--pad) clamp(36px,5vw,64px);display:flex;flex-direction:column;justify-content:space-between;gap:48px;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-10vw;top:-12vw;width:46vw;aspect-ratio:1;border-radius:50%;border:1px solid rgba(246,239,230,.12)}
+.hero::after{content:"";position:absolute;right:2vw;top:4vw;width:24vw;aspect-ratio:1;border-radius:50%;background:var(--car);opacity:.16}
+.hero-in{position:relative;z-index:1;max-width:1050px}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--car);margin-bottom:22px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(42px,7.4vw,112px);line-height:1;letter-spacing:-.035em}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em}
+.w span{display:inline-block;transform:translateY(110%);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.go .w span{transform:none}
+.w .ac{font-style:italic;color:var(--car)}
+.intro{max-width:520px;margin-top:26px;color:rgba(246,239,230,.75);font-size:clamp(15px,1.4vw,18px)}
+.trio{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gl{border:1px solid rgba(246,239,230,.14);background:rgba(246,239,230,.05);border-radius:28px;padding:26px}
+.gl h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--car);font-weight:500;margin-bottom:18px}
+.yr{font-family:'Anton',sans-serif;font-size:64px;line-height:1;color:var(--cream);letter-spacing:.02em}
+.gl>p{font-size:14px;color:rgba(246,239,230,.7);margin:8px 0 16px}
+.tl,.ing{list-style:none;margin:0;padding:0;font-size:14px}
+.tl li,.ing li{display:flex;gap:14px;padding:9px 0;border-top:1px solid rgba(246,239,230,.12)}
+.tl b{color:var(--car);font-weight:500;min-width:42px}
+.ing li{justify-content:space-between}
+.ing b{font-weight:500}
+.ing span{color:rgba(246,239,230,.65);text-align:right}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px 12px}
+.stats b{display:block;font-family:'Anton',sans-serif;font-weight:400;font-size:44px;line-height:1;letter-spacing:.02em}
+.stats span{font-size:12px;color:rgba(246,239,230,.65)}
+.award{margin-top:18px;padding-top:14px;border-top:1px solid rgba(246,239,230,.12);font-size:13px;color:rgba(246,239,230,.8)}
+.award i{font-style:normal;color:var(--car)}
+
+.chefs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.chef{position:relative}
+.pt{aspect-ratio:4/5;border-radius:28px;overflow:hidden;margin-bottom:18px}
+.pt svg,.pt img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.chef:hover .pt svg,.chef:hover .pt img{transform:scale(1.06)}
+.chef h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.02em;line-height:1.15}
+.role{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--car);margin:4px 0 10px}
+.chef blockquote{margin:0 0 12px;font-family:var(--serif);font-style:italic;font-weight:300;font-size:16px;color:var(--moc);line-height:1.45}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{font-size:11px;padding:4px 10px;border-radius:999px;background:var(--sand)}
+
+.gal{background:var(--sand)}
+.gal .sec{padding-bottom:clamp(72px,10vw,130px)}
+.mosaic{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(110px,13vw,185px);gap:12px}
+.t{position:relative;border-radius:24px;overflow:hidden;display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.t:hover{transform:scale(.985)}
+.t::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:currentColor;opacity:.07;left:-12%;bottom:-30%}
+.t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.t:hover img{transform:scale(1.07)}
+.t svg{width:28%;max-width:84px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.5}
+.cap{position:absolute;left:14px;bottom:14px;background:rgba(246,239,230,.92);color:var(--esp);font-size:12px;padding:6px 12px;border-radius:999px}
+
+.foot{background:var(--ink);color:rgba(246,239,230,.7);padding:48px var(--pad);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:13px}
+.foot b{font-family:'Anton',sans-serif;font-weight:400;font-size:22px;letter-spacing:.04em;color:var(--cream);text-transform:uppercase}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  .trio{grid-template-columns:1fr}
+  .chefs{grid-template-columns:1fr 1fr}
+  .nav nav{display:none}
+}
+@media (max-width:720px){
+  .mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .t{grid-area:auto!important}
+  .t:nth-child(6n+1){grid-column:span 2}
+}
+@media (max-width:520px){.chefs{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.w span{transform:none;transition:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="coffee" viewBox="0 0 24 24"><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2M8 3v2M12 3v2"/></symbol>
+<symbol id="bake" viewBox="0 0 24 24"><path d="M4 15a8 8 0 0 1 16 0v3H4z"/><path d="M12 7v3"/></symbol>
+<symbol id="music" viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></symbol>
+<symbol id="heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+<symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+<symbol id="spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
+</defs></svg>
+
+<header class="nav">
+  <a class="logo" href="#">Brew<i>&amp;</i>Bean</a>
+  <nav><a href="#">Home</a><a href="#">Menu</a><a class="on" href="#">About</a><a href="#gallery">Gallery</a><a href="#">Visit</a></nav>
+  <a class="btn" href="#">Reserve</a>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-in">
+    <p class="eyebrow">About Brew&amp;Bean · Since 2018</p>
+    <h1 id="h1" aria-label="Started with one roaster and a very big idea."></h1>
+    <p class="intro">From a 200 sq ft corner on Coffee Lane to a neighborhood favorite, we still roast every single batch ourselves.</p>
+  </div>
+  <div class="trio">
+    <article class="gl rv">
+      <h3>How it started</h3>
+      <div class="yr">2018</div>
+      <p>One roaster, one counter, twelve seats.</p>
+      <ul class="tl"><li><b>2018</b>Opened our first counter</li><li><b>2021</b>Added an in-house roaster</li><li><b>2024</b>Launched the bakery</li></ul>
+    </article>
+    <article class="gl rv" style="transition-delay:.1s">
+      <h3>What goes in your cup</h3>
+      <ul class="ing">
+        <li><b>Beans</b><span>Araku and Chikmagalur estates</span></li>
+        <li><b>Milk</b><span>Local farms, delivered daily</span></li>
+        <li><b>Cocoa</b><span>Stone-ground, single estate</span></li>
+        <li><b>Sweeteners</b><span>Jaggery and raw cane</span></li>
+        <li><b>Flour</b><span>Stone-milled, slow-fermented</span></li>
+      </ul>
+    </article>
+    <article class="gl rv" style="transition-delay:.2s">
+      <h3>Proud moments</h3>
+      <div class="stats">
+        <div><b data-to="8" data-suf="+">0</b><span>Years roasting</span></div>
+        <div><b data-to="250" data-suf="k+">0</b><span>Cups served</span></div>
+        <div><b data-to="4.9" data-dec="1">0</b><span>Guest rating</span></div>
+        <div><b data-to="12">0</b><span>Awards won</span></div>
+      </div>
+      <p class="award"><i>✦</i> Best specialty cafe, Hyderabad 2025</p>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="chefs">
+  <div class="sh rv">
+    <div><p class="label">Our chefs</p><h2>The hands behind <em>every cup</em> and crumb.</h2></div>
+    <p class="lead">Roasters, bakers, and baristas who care a little too much.</p>
+  </div>
+  <div class="chefs" id="chefList"></div>
+</section>
+
+<section class="gal" id="gallery">
+  <div class="sec">
+    <div class="sh rv">
+      <div><p class="label">Our gallery</p><h2>A look <em>inside</em> the cafe.</h2></div>
+      <p class="lead">Mornings, bakes, and the moments in between.</p>
+    </div>
+    <div class="mosaic" id="mosaic"></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div><b>Brew&amp;Bean</b><p>12 Coffee Lane, Jubilee Hills, Hyderabad</p></div>
+  <p>Mon–Fri 7am – 10pm · Sat–Sun 8am – 11pm</p>
+  <p>© 2026 Brew&amp;Bean</p>
+</footer>
+
+<script>
+/* Stand-in for your JSON. Set "img" to a photo URL to replace the placeholder art. */
+const CHEFS=[
+ {n:"Arjun Rao",r:"Head roaster",q:"Every origin has a story. I just try not to burn it.",t:["Roasting","Cupping"],bg:"#C98B4A",skin:"#D9A07A",hair:"short",hat:0,shirt:"#3B2A20",img:""},
+ {n:"Meera Iyer",r:"Head pastry chef",q:"Butter, patience, and a very warm oven.",t:["Croissants","Sourdough"],bg:"#8A6A52",skin:"#E3B08A",hair:"long",hat:1,shirt:"#F6EFE6",img:""},
+ {n:"Karthik Reddy",r:"Lead barista",q:"Latte art is just math with a smile.",t:["Espresso","Latte art"],bg:"#3B2A20",skin:"#C98F68",hair:"beard",hat:0,shirt:"#C98B4A",img:""},
+ {n:"Sana Khan",r:"Kitchen chef",q:"Good food should feel like a hug.",t:["Brunch","Sandwiches"],bg:"#D9A56A",skin:"#E8BC98",hair:"long",hat:1,shirt:"#2A1D16",img:""}
+];
+const GAL=[
+ ["Latte art","coffee","#3B2A20","#F6EFE6"],["Morning rush","sun","#C98B4A","#1A110C"],["Fresh croissants","bake","#8A6A52","#F6EFE6"],
+ ["The roastery","spark","#F6EFE6","#3B2A20"],["Sunday jazz","music","#2A1D16","#C98B4A"],["Cozy corners","heart","#D9A56A","#3B2A20"],
+ ["Pour-over bar","coffee","#C98B4A","#1A110C"],["Cake counter","bake","#3B2A20","#F6EFE6"],["Window seats","sun","#F6EFE6","#8A6A52"],
+ ["Beans from Araku","spark","#8A6A52","#F6EFE6"],["Late-night work","moon","#2A1D16","#F6EFE6"],["Weekend brunch","heart","#D9A56A","#3B2A20"]
+].map((a,i)=>({cap:a[0],ic:a[1],bg:a[2],fg:a[3],img:""}));
+const POS=["1/1/3/3","1/3/4/5","1/5/3/7","3/1/5/3","3/5/5/7","4/3/5/5","5/1/8/3","5/3/7/5","5/5/7/7","7/3/9/5","7/5/9/7","8/1/9/3"];
+
+function avatar(c){
+  const hair=c.hair==='long'?`<path d="M58 104Q54 160 72 176L84 150V100Z M142 104Q146 160 128 176L116 150V100Z" fill="#2A1D16"/>`:'';
+  const top=c.hat?`<path d="M64 74Q46 44 78 36Q90 18 112 30Q146 20 142 54Q154 68 138 76Z" fill="#fff"/><rect x="70" y="70" width="64" height="16" rx="4" fill="#fff"/>`:`<path d="M60 102Q58 58 100 58Q142 58 140 102Q122 82 100 84Q78 82 60 102Z" fill="#2A1D16"/>`;
+  const beard=c.hair==='beard'?`<path d="M66 114Q70 156 100 158Q130 156 134 114Q118 134 100 134Q82 134 66 114Z" fill="#2A1D16"/>`:'';
+  return `<svg viewBox="0 0 200 250" role="img" aria-label="${c.n}"><rect width="200" height="250" fill="${c.bg}"/><circle cx="150" cy="60" r="70" fill="#fff" opacity=".1"/>${hair}<path d="M14 250V212Q14 166 100 166Q186 166 186 212V250Z" fill="${c.shirt}"/><rect x="88" y="136" width="24" height="34" fill="${c.skin}"/><circle cx="100" cy="108" r="40" fill="${c.skin}"/>${top}${beard}<circle cx="86" cy="108" r="3.6" fill="#2A1D16"/><circle cx="114" cy="108" r="3.6" fill="#2A1D16"/><path d="M88 126Q100 136 112 126" stroke="#2A1D16" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`;
+}
+document.getElementById('chefList').innerHTML=CHEFS.map((c,i)=>`<article class="chef rv" style="transition-delay:${i*90}ms"><div class="pt">${c.img?`<img src="${c.img}" alt="${c.n}">`:avatar(c)}</div><h3>${c.n}</h3><p class="role">${c.r}</p><blockquote>“${c.q}”</blockquote><div class="tags">${c.t.map(x=>`<span>${x}</span>`).join('')}</div></article>`).join('');
+document.getElementById('mosaic').innerHTML=GAL.map((g,i)=>`<figure class="t rv" style="grid-area:${POS[i]};background:${g.bg};color:${g.fg};margin:0;transition-delay:${(i%4)*70}ms">${g.img?`<img src="${g.img}" alt="${g.cap}">`:`<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#${g.ic}"/></svg>`}<figcaption class="cap">${g.cap}</figcaption></figure>`).join('');
+
+const H=[["Started"],["with"],["one"],["roaster"],["and"],["a"],["very","ac"],["big","ac"],["idea.","ac"]];
+const h1=document.getElementById('h1');
+H.forEach((w,i)=>{const o=document.createElement('span');o.className='w';o.setAttribute('aria-hidden','true');const s=document.createElement('span');s.textContent=w[0]+'\u00A0';if(w[1])s.className='ac';s.style.transitionDelay=(i*70)+'ms';o.appendChild(s);h1.appendChild(o)});
+requestAnimationFrame(()=>requestAnimationFrame(()=>document.getElementById('hero').classList.add('go')));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');if(e.target.querySelector('[data-to]'))count(e.target);io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+function count(root){root.querySelectorAll('[data-to]').forEach(n=>{const to=+n.dataset.to,d=+(n.dataset.dec||0),suf=n.dataset.suf||'',t0=performance.now();(function f(t){const p=Math.min((t-t0)/1400,1),v=to*(1-Math.pow(1-p,3));n.textContent=v.toFixed(d)+(p===1?suf:'');if(p<1)requestAnimationFrame(f)})(t0)})}
+</script>
+</body>
+</html>

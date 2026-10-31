@@ -1,15 +1,33 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Menu", href: "/menu" },
+  { label: "Reviews", href: "/reviews" },
+] as const;
+
 export function Nav() {
-  const [onBanner, setOnBanner] = useState(true);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [onBanner, setOnBanner] = useState(isHome);
 
   useEffect(() => {
+    if (!isHome) {
+      setOnBanner(false);
+      return;
+    }
+
     const hero = document.getElementById("home");
-    if (!hero) return;
+    if (!hero) {
+      setOnBanner(false);
+      return;
+    }
 
     const io = new IntersectionObserver(
       ([entry]) => setOnBanner(entry.isIntersecting),
@@ -17,7 +35,7 @@ export function Nav() {
     );
     io.observe(hero);
     return () => io.disconnect();
-  }, []);
+  }, [isHome, pathname]);
 
   return (
     <header
@@ -29,7 +47,7 @@ export function Nav() {
       )}
     >
       <Link
-        href="#home"
+        href="/"
         className="font-[family-name:var(--font-anton)] text-[22px] tracking-[0.04em] uppercase no-underline"
       >
         Brew
@@ -44,24 +62,21 @@ export function Nav() {
         Bean
       </Link>
       <nav className="hidden items-center gap-[30px] text-sm min-[861px]:flex">
-        <Link href="#home" className="opacity-80 transition-opacity hover:opacity-100">
-          Home
-        </Link>
-        <Link href="#menu" className="opacity-80 transition-opacity hover:opacity-100">
-          Menu
-        </Link>
-        <Link href="#offer" className="opacity-80 transition-opacity hover:opacity-100">
-          Why us
-        </Link>
-        <Link href="#reviews" className="opacity-80 transition-opacity hover:opacity-100">
-          Reviews
-        </Link>
-        <Link href="#visit" className="opacity-80 transition-opacity hover:opacity-100">
-          Visit
-        </Link>
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+              "opacity-80 transition-opacity hover:opacity-100",
+              pathname === link.href && "opacity-100",
+            )}
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
       <Link
-        href="#visit"
+        href="/#visit"
         className={cn(
           "inline-flex items-center rounded-full border-0 px-[18px] py-2 text-[13px] font-medium no-underline transition-[transform,background-color,color] duration-[900ms] hover:-translate-y-0.5",
           onBanner
